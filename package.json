@@ -1,8 +1,8 @@
 {
-  "name": "docpad-plugin-yourpluginname",
+  "name": "docpad-plugin-moyo",
   "version": "2.1.0",
   "description": "DocPad plugin that adds the ability to render Something to Something Else",
-  "homepage": "https://github.com/docpad/docpad-plugin-yourpluginname",
+  "homepage": "https://github.com/docpad/docpad-plugin-moyo",
   "license": "MIT",
   "keywords": [
     "docpad",
@@ -51,20 +51,20 @@
     "vsopvsop (https://github.com/vsopvsop)"
   ],
   "bugs": {
-    "url": "https://github.com/docpad/docpad-plugin-yourpluginname/issues"
+    "url": "https://github.com/docpad/docpad-plugin-moyo/issues"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/docpad/docpad-plugin-yourpluginname.git"
+    "url": "https://github.com/docpad/docpad-plugin-moyo.git"
   },
   "engines": {
-    "node": ">=0.10"
+    "node": ">=8.0.0 <9.0.0"
   },
   "editions": [
     {
       "description": "Source + CoffeeScript + Require",
       "directory": "source",
-      "entry": "yourpluginname.plugin.coffee",
+      "entry": "moyo.plugin.coffee",
       "syntaxes": [
         "coffeescript",
         "require"
@@ -73,7 +73,7 @@
     {
       "description": "CoffeeScript Compiled + ES5 + Require",
       "directory": "es5",
-      "entry": "yourpluginname.plugin.js",
+      "entry": "moyo.plugin.js",
       "syntaxes": [
         "javascript",
         "es5",
@@ -81,11 +81,10 @@
       ]
     }
   ],
-  "main": "es5/yourpluginname.plugin.js",
-  "dependencies": {},
+  "main": "source/moyo.plugin.coffee",
   "devDependencies": {
-    "coffee-script": "^1.12.4",
     "coffeelint": "^1.16.0",
+    "coffeescript": "^2.2.3",
     "docpad": "^6.79.4",
     "projectz": "^1.3.2"
   },
@@ -111,6 +110,6 @@
     "our:release:check:dirty": "git diff --exit-code",
     "our:release:tag": "export MESSAGE=$(cat ./HISTORY.md | sed -n \"/## v$npm_package_version/,/##/p\" | sed 's/## //' | awk 'NR>1{print buf}{buf = $0}') && test \"$MESSAGE\" || (echo 'proper changelog entry not found' && exit -1) && git tag v$npm_package_version -am \"$MESSAGE\"",
     "our:release:push": "git push origin master && git push origin --tags",
-    "test": "node --harmony es5/yourpluginname.test.js --joe-reporter=console"
+    "test": "coffee --harmony src/moyo.test.coffee --joe-reporter=console"
   }
 }
